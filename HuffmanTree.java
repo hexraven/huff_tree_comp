@@ -38,11 +38,11 @@ public class HuffmanTree {
 				: subTreetoString(root.left, route + "0") + "\n" + subTreetoString(root.right, route + "1");
 	}
 
-	private static void subTreeAddNode(HuffmanTreeNode root, String route, String ascii_code) {
+	private static void subTreeAddNode(HuffmanTreeNode root, String route, int ascii_code) {
 		if (root == null)
 			return;
 		if (route.isEmpty())
-			root.data = Integer.parseInt(ascii_code);
+			root.data = ascii_code;
 		else {
 			HuffmanTreeNode next;
 			if (route.charAt(0) == '0') {
@@ -78,7 +78,7 @@ public class HuffmanTree {
 		String ascii_code, route;
 		try {
 			while ((ascii_code = input.nextLine()) != null && (route = input.nextLine()) != null)
-				subTreeAddNode(overallRoot, route, ascii_code);
+				subTreeAddNode(overallRoot, route, Integer.parseInt(ascii_code));
 		} catch (NoSuchElementException e) {
 			return;
 		}
